@@ -1,7 +1,5 @@
-import express from 'express'
 import { envConfig } from './utils/config/env'
-
-const app = express()
+import app from './config/app'
 
 const { port } = envConfig
 app.listen(port, () => {
