@@ -1,4 +1,6 @@
-export interface HttpResponse {
+import type { Response } from 'express'
+
+export interface HttpResponse extends Response {
   statusCode: number
   body: any
 }

@@ -1,17 +1,17 @@
-import { ServerError } from '../errors/server-error'
-import type { HttpResponse } from '../protocols/http'
+import type { Response } from 'express'
 
-export const badRequest = (error: Error): HttpResponse => ({
-  statusCode: 400,
-  body: error
-})
+export const badRequest = (
+  response: Response,
+  error: Error
+): Response<any, Record<string, any>> => {
+  console.error(error)
+  return response.sendStatus(400)
+}
 
-export const serverError = (): HttpResponse => ({
-  statusCode: 500,
-  body: new ServerError()
-})
+export const serverError = (response: Response): Response => {
+  return response.sendStatus(500)
+}
 
-export const ok = (data: any): HttpResponse => ({
-  statusCode: 200,
-  body: data
-})
+export const ok = (response: Response, data: any): Response => {
+  return response.send(data).status(200)
+}

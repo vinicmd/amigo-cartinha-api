@@ -1,10 +1,8 @@
 import { Router, type Express } from 'express'
-import FastGlob from 'fast-glob'
+import { CreateAccount } from '../controllers/user/create-account'
 
-export default (app: Express): void => {
+export default (app: Express) => {
   const router = Router()
-  app.use('/', router)
-  FastGlob.sync('**/src/routes/**route.ts').map(async file =>
-    (await import(`../../${file}`)).default(router)
-  )
+  router.post('/signup', CreateAccount)
+  app.use(router)
 }

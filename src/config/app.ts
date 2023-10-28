@@ -3,7 +3,8 @@ import setupRoutes from './routes'
 import middlewares from './middlewares'
 
 const app = express()
-setupRoutes(app)
 middlewares(app)
+
+setupRoutes(app)
 
 export default app
