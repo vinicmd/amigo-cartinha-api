@@ -10,12 +10,28 @@ export const Account = model(
     },
     password: {
       type: String,
-      required: true
+      required: false
     },
     createdAt: {
       type: Date,
       required: true,
       default: Date.now
+    },
+    name: {
+      type: String,
+      required: false
+    },
+    address: {
+      type: String,
+      required: false
+    },
+    teams: {
+      type: String,
+      required: false
+    },
+    helpContact: {
+      type: String,
+      required: false
     }
   })
 )

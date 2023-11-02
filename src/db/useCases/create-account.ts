@@ -1,17 +1,33 @@
 import { encrypter } from '../../helpers/encrypter'
 import type { AccountModel } from '../../models/account'
-import type { User } from '../../protocols/user'
 import { Account } from '../models/Account'
+
+interface CreateAccount {
+  email: string
+  password?: string
+  name: string
+  address: string
+  helpContact: string
+  teams: string
+}
 
 export async function dbCreateAccount({
   email,
-  password
-}: User): Promise<AccountModel> {
+  password = '',
+  name,
+  address,
+  helpContact,
+  teams
+}: CreateAccount): Promise<AccountModel> {
   const hash = await encrypter(password)
   const account = await Account.create({
     email,
-    password: hash
+    password: hash,
+    name,
+    address,
+    helpContact,
+    teams
   })
 
-  return account as AccountModel
+  return account
 }
