@@ -16,8 +16,7 @@ export const StartDraw = async (
     _id: '653d106641b780c835273c15'
   })
   const htmlContent = secretFriendEmail(secretFriend)
-  const subject = 'Você saiu com...'
 
-  await sendEmail({ htmlContent, toEmail, subject })
+  await sendEmail({ htmlContent, toEmail })
   return res.status(200).json(draw)
 }
