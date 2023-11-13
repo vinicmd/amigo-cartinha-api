@@ -13,6 +13,8 @@ import { CheckPasswordChangeStatus } from '../controllers/user/check-password-st
 export default (app: Express): void => {
   const router = Router()
 
+  router.get('/', (_req, res) => res.status(200).json({ message: 'alive' }))
+
   router.post('/signup', CreateAccount)
 
   router.get('/signup/:userId', CheckPasswordChangeStatus)
@@ -28,6 +30,8 @@ export default (app: Express): void => {
   router.get('/draw/:drawId', GetDraw)
 
   router.post('/email/:secretFriendUserId', SendEmailPartitipants)
+
+  router.get('*', (_req, res) => res.sendStatus(404))
 
   app.use(router)
 }
