@@ -15,7 +15,7 @@
   },
   "homepage": "https://github.com/vinicmd/amigo-cartinha-api#readme",
   "scripts": {
-    "build": "yarn && tsc",
+    "build": "tsc",
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js"
   },
