@@ -7,11 +7,17 @@ import { CreateDraw } from '../controllers/draw/create-draw'
 // import { SendEmailPartitipants } from '../controllers/draw/send-email-participants'
 import { GetDraw } from '../controllers/draw/get-draw'
 import { SendEmailPartitipants } from '../controllers/draw/send-email-participants'
+import { CreatePassword } from '../controllers/user/create-account-password'
+import { CheckPasswordChangeStatus } from '../controllers/user/check-password-status'
 
 export default (app: Express): void => {
   const router = Router()
 
   router.post('/signup', CreateAccount)
+
+  router.get('/signup/:userId', CheckPasswordChangeStatus)
+
+  router.post('/signup/:userId/password', CreatePassword)
 
   router.post('/signin', Login)
 

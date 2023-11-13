@@ -12,6 +12,11 @@ export const Account = model(
       type: String,
       required: false
     },
+    pendingPasswordChange: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
     createdAt: {
       type: Date,
       required: true,
